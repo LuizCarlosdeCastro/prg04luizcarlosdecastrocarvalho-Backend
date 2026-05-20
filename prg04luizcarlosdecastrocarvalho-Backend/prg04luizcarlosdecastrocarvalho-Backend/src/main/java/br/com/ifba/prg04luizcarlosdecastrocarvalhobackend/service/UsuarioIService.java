@@ -1,9 +1,9 @@
-package com.ifba.prg04luizcarlosdecastrocarvalhobackend.service;
+package br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.service;
 
-import com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity.Usuario;
+import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity.Usuario;
 import java.util.List;
 
-public interface IUsuarioService {
+public interface UsuarioIService {
     Usuario save(Usuario usuario);
     List<Usuario> findAll();
     Usuario findById(Long id);

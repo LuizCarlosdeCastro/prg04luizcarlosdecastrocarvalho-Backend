@@ -1,4 +1,4 @@
-package com.example.prg04luizcarlosdecastrocarvalhobackend;
+package br.com.ifba.prg04luizcarlosdecastrocarvalhobackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,8 +1,8 @@
-package com.ifba.prg04luizcarlosdecastrocarvalhobackend.service;
+package br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.service;
 
-import com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity.Usuario;
-import com.ifba.prg04luizcarlosdecastrocarvalhobackend.repository.UsuarioRepository;
-import com.ifba.prg04luizcarlosdecastrocarvalhobackend.service.UsuarioIService;
+import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity.Usuario;
+import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.repository.UsuarioRepository;
+import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.service.UsuarioIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -44,6 +44,6 @@ public class UsuarioService implements UsuarioIService {
     @Override
     public void delete(Long id) {
         Usuario usuario = this.findById(id);
-        usuarioRepository.delete(usuario);
+        usuarioRepository.deleteById(id);
     }
 }

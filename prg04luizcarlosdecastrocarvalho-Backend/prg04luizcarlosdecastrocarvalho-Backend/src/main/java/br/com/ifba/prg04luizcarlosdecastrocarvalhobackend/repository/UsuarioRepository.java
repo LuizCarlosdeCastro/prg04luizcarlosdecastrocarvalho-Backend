@@ -1,6 +1,6 @@
-package com.ifba.prg04luizcarlosdecastrocarvalhobackend.repository;
+package br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.repository;
 
-import com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity.usuario;
+import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

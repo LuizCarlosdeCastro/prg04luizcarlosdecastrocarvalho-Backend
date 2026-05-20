@@ -1,4 +1,4 @@
-package com.ifba.prg04luizcarlosdecastrocarvalhobackend.infraestructure;
+package br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.infraestructure;
 
 import jakarta.persistence.*;
 import lombok.Data;

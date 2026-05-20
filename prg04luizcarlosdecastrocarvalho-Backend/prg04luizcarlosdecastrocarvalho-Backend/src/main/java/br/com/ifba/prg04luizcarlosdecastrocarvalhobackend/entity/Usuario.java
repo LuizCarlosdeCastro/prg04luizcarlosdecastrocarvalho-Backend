@@ -1,7 +1,10 @@
-package com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity;
+package br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity;
 
+import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.infraestructure.PersistenceEntity;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
