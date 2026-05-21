@@ -17,14 +17,14 @@ public class UsuarioController implements UsuarioIController {
 
     private final UsuarioIService usuarioService;
 
-
+//metodo get
     @Override
     @GetMapping(path = "/findall")
     public ResponseEntity<List<Usuario>> findAll() {
         return ResponseEntity.ok(usuarioService.findAll());
     }
 
-
+//get
     @Override
     @GetMapping(path = "/findbyid/{id}")
     public ResponseEntity<Usuario> findById(@PathVariable Long id) {
@@ -40,7 +40,7 @@ public class UsuarioController implements UsuarioIController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario));
     }
 
-
+//put
     @Override
     @PutMapping(
             path = "/update/{id}",
@@ -53,7 +53,7 @@ public class UsuarioController implements UsuarioIController {
         return ResponseEntity.ok(usuarioAtualizado);
     }
 
-
+//delete
     @Override
     @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
