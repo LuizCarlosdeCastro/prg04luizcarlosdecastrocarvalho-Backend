@@ -1,7 +1,8 @@
 package br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.infraestructure.exception;
 
 import lombok.*;
-import org.apache.el.util.ExceptionUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -38,7 +39,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
             final String message,
             final HttpStatus httpStatus,
             final WebRequest request){
-        ErrorResponse errorResponse = new ErrorResponse(hhtpStatus.value(), message);
+        ErrorResponse errorResponse = new ErrorResponse(httpStatus.value(), message, null);
         if(this.printStackTrace){
             errorResponse.setStacktrace(ExceptionUtils.getStackTrace(exception));
         }
