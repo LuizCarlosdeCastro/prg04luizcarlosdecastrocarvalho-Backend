@@ -1,8 +1,7 @@
-package br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.infraestructure;
+package br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.infraestructure.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import java.time.LocalDate;
 
 @MappedSuperclass
 @Data

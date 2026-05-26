@@ -1,6 +1,6 @@
 package br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity;
 
-import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.infraestructure.PersistenceEntity;
+import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.infraestructure.entity.PersistenceEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

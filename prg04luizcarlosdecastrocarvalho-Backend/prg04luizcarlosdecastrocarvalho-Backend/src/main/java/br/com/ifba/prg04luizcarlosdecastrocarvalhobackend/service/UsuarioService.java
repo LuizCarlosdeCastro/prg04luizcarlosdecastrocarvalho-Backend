@@ -1,6 +1,7 @@
 package br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.service;
 
 import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity.Usuario;
+import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.infraestructure.exception.BusinessException;
 import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.repository.UsuarioRepository;
 import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.service.UsuarioIService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class UsuarioService implements UsuarioIService {
     @Override
     public Usuario findById(Long id) {
         return usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado com o ID: " + id));
+                .orElseThrow(() -> new BusinessException("Usuário não encontrado com o ID: " + id));
     }
 
     @Override
