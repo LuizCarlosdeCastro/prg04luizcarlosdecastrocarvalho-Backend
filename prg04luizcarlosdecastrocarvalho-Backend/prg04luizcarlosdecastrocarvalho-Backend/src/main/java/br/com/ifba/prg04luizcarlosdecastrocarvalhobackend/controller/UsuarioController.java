@@ -5,6 +5,7 @@ import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity.Usuario;
 import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.service.UsuarioIService;
 import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.dto.UsuarioGetResponseDto;
 import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.mapper.ObjectMapperUtil;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -49,7 +50,7 @@ public class UsuarioController implements UsuarioIController {
 
 
     @PostMapping(path = "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UsuarioGetResponseDto> save(@RequestBody UsuarioPostRequestDto usuarioPostRequestDto) {
+    public ResponseEntity<UsuarioGetResponseDto> save(@RequestBody @Valid UsuarioPostRequestDto usuarioPostRequestDto) {
 
         Usuario usuarioEntity = ObjectMapperUtil.map(usuarioPostRequestDto, Usuario.class);
         Usuario usuarioSalvo = this.usuarioService.save(usuarioEntity);
@@ -60,9 +61,11 @@ public class UsuarioController implements UsuarioIController {
 //put
 
     @PutMapping(path = "/update/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Usuario> update(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
-        Usuario usuarioAtualizado = usuarioService.update(id, usuario);
-        return ResponseEntity.ok(usuarioAtualizado);
+    public ResponseEntity<UsuarioGetResponseDto> update(@PathVariable("id") Long id, @RequestBody @Valid UsuarioPostRequestDto usuarioPostRequestDto) {
+        Usuario usuarioEntity = ObjectMapperUtil.map(usuarioPostRequestDto, Usuario.class);
+        Usuario usuarioAtualizado = usuarioService.update(id, usuarioEntity);
+        UsuarioGetResponseDto responseDto = ObjectMapperUtil.map(usuarioAtualizado, UsuarioGetResponseDto.class);
+        return ResponseEntity.ok(responseDto);
     }
 
 //delete

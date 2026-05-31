@@ -10,6 +10,6 @@ public interface UsuarioIController {
     ResponseEntity<UsuarioGetResponseDto> save(UsuarioPostRequestDto usuarioPostRequestDto);
     ResponseEntity<List<UsuarioGetResponseDto>> findAll();
     ResponseEntity<UsuarioGetResponseDto> findById(Long id);
-    ResponseEntity<Usuario> update(Long id, Usuario usuario);
+    ResponseEntity<UsuarioGetResponseDto> update(Long id, UsuarioPostRequestDto usuarioPostRequestDto);
     ResponseEntity<Void> delete(Long id);
 }

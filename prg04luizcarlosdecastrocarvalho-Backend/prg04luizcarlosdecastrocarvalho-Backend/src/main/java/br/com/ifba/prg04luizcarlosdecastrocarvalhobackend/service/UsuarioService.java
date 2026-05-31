@@ -6,6 +6,7 @@ import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.repository.UsuarioRepo
 import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.service.UsuarioIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
@@ -15,7 +16,17 @@ public class UsuarioService implements UsuarioIService {
     private final UsuarioRepository usuarioRepository;
 
     @Override
+    @Transactional
     public Usuario save(Usuario usuario) {
+        if (usuario.getNome() != null && usuario.getNome().isEmpty()) {
+            throw new RuntimeException("Nome não pode estar vazio");
+        }
+        if (usuario.getEmail() != null && usuario.getEmail().isEmpty()) {
+            throw new RuntimeException("Email não pode ser vazio");
+        }
+        if (usuario.getSenha() != null && usuario.getSenha().isEmpty()) {
+            throw new RuntimeException("Senha não pode ser vazia");
+        }
         return usuarioRepository.save(usuario);
     }
 
@@ -31,9 +42,19 @@ public class UsuarioService implements UsuarioIService {
     }
 
     @Override
+    @Transactional
     public Usuario update(Long id, Usuario usuarioAtualizado) {
-        Usuario usuarioExistente = this.findById(id);
+        if (usuarioAtualizado.getNome() != null && usuarioAtualizado.getNome().isEmpty()) {
+            throw new RuntimeException("Nome não pode estar vazio");
+        }
+        if (usuarioAtualizado.getEmail() != null && usuarioAtualizado.getEmail().isEmpty()) {
+            throw new RuntimeException("Email não pode ser vazio");
+        }
+        if (usuarioAtualizado.getSenha() != null && usuarioAtualizado.getSenha().isEmpty()) {
+            throw new RuntimeException("Senha não pode ser vazia");
+        }
 
+        Usuario usuarioExistente = this.findById(id);
         usuarioExistente.setNome(usuarioAtualizado.getNome());
         usuarioExistente.setEmail(usuarioAtualizado.getEmail());
         usuarioExistente.setSenha(usuarioAtualizado.getSenha());
