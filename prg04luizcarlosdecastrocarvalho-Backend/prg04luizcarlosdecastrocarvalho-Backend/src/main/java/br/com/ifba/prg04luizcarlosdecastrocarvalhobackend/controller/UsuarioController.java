@@ -7,6 +7,8 @@ import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.dto.UsuarioGetResponse
 import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.mapper.ObjectMapperUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/usuarios")
+@RequestMapping("/usuarios")
 @RequiredArgsConstructor
 public class UsuarioController implements UsuarioIController {
 
@@ -27,12 +29,14 @@ public class UsuarioController implements UsuarioIController {
 
 
     @GetMapping(path = "/findall")
-    public ResponseEntity<List<UsuarioGetResponseDto>> findAll() {
-        List<UsuarioGetResponseDto> dtos = ObjectMapperUtil.mapList(
-                this.usuarioService.findAll(),
-                UsuarioGetResponseDto.class
+    public ResponseEntity<Page<UsuarioGetResponseDto>> findAll(Pageable pageable) {
+
+        Page<Usuario> usuariosPage = this.usuarioService.findAll(pageable);
+        Page<UsuarioGetResponseDto> dtosPage = usuariosPage.map(usuario ->
+                ObjectMapperUtil.map(usuario, UsuarioGetResponseDto.class)
         );
-        return ResponseEntity.status(HttpStatus.OK).body(dtos);
+
+        return ResponseEntity.status(HttpStatus.OK).body(dtosPage);
     }
 
 //get

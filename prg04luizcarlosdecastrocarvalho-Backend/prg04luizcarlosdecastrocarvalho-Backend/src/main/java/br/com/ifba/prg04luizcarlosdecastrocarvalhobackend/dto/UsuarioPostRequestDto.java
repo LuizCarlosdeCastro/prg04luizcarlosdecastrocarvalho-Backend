@@ -32,4 +32,9 @@ public class UsuarioPostRequestDto {
     @NotNull(message = "A senha não pode ser vazio")
     @JsonProperty(value = "senha")
     private String senha;
+
+    @NotBlank(message = "O tipo de usuário é obrigatório")
+    @NotNull(message = "O tipo de usuário não pode ser vazio")
+    @JsonProperty(value = "tipoUsuario")
+    private String tipoUsuario;
 }

@@ -5,6 +5,8 @@ import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.infraestructure.except
 import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.repository.UsuarioRepository;
 import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.service.UsuarioIService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -31,8 +33,8 @@ public class UsuarioService implements UsuarioIService {
     }
 
     @Override
-    public List<Usuario> findAll() {
-        return usuarioRepository.findAll();
+    public Page<Usuario> findAll(Pageable pageable) {
+        return usuarioRepository.findAll(pageable);
     }
 
     @Override
