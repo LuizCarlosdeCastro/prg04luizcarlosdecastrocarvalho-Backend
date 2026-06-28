@@ -19,7 +19,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class UsuarioController implements UsuarioIController {
 
@@ -54,7 +53,7 @@ public class UsuarioController implements UsuarioIController {
 
 
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
+
     @PostMapping(path = "/save")
     public ResponseEntity<UsuarioGetResponseDto> save(@RequestBody @Valid UsuarioPostRequestDto usuarioPostRequestDto) {
 
@@ -66,7 +65,7 @@ public class UsuarioController implements UsuarioIController {
 
 //put
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
+
     @PutMapping(path = "/update/{id}")
     public ResponseEntity<UsuarioGetResponseDto> update(@PathVariable("id") Long id, @RequestBody @Valid UsuarioPostRequestDto usuarioPostRequestDto) {
         Usuario usuarioEntity = ObjectMapperUtil.map(usuarioPostRequestDto, Usuario.class);
@@ -82,7 +81,6 @@ public class UsuarioController implements UsuarioIController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UsuarioPostRequestDto loginDto) {
         return usuarioService.findAll(org.springframework.data.domain.Pageable.unpaged())

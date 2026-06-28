@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/reservas")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class ReservaController implements ReservaIController {
 
     private final ReservaIService reservaService;
@@ -22,7 +21,6 @@ public class ReservaController implements ReservaIController {
 
 
     @Override
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping(path = "/save")
     public ResponseEntity<Reserva> save(@RequestBody Reserva reserva) {
 
@@ -38,7 +36,6 @@ public class ReservaController implements ReservaIController {
     }
 
     @Override
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(path = "/findall")
     public ResponseEntity<List<Reserva>> findAll() {
         return ResponseEntity.ok(reservaService.findAll());

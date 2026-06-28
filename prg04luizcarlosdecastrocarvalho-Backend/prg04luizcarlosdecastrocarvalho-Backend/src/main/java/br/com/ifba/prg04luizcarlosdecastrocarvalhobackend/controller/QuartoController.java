@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/quartos")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class QuartoController implements QuartoIController {
 
     private final QuartoIService quartoService;
