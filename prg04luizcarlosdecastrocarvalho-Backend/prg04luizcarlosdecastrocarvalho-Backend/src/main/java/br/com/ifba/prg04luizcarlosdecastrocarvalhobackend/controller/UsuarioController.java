@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class UsuarioController implements UsuarioIController {
 
@@ -77,5 +78,17 @@ public class UsuarioController implements UsuarioIController {
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         usuarioService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UsuarioPostRequestDto loginDto) {
+        return usuarioService.findAll(org.springframework.data.domain.Pageable.unpaged())
+                .stream()
+                .filter(u -> u.getLogin().equals(loginDto.getLogin()) && u.getSenha().equals(loginDto.getSenha()))
+                .findFirst()
+                .map(usuario -> {
+                    return ResponseEntity.ok(ObjectMapperUtil.map(usuario, UsuarioGetResponseDto.class));
+                })
+                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
     }
 }

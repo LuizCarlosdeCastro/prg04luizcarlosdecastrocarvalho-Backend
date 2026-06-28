@@ -9,6 +9,9 @@ import lombok.*;
 @NoArgsConstructor
 public class UsuarioGetResponseDto {
 
+    @JsonProperty(value = "id")
+    private Long id;
+
     @JsonProperty(value = "nome")
     private String nome;
 
@@ -17,4 +20,9 @@ public class UsuarioGetResponseDto {
 
     @JsonProperty(value = "login")
     private String login;
+
+    @JsonProperty(value = "tipoUsuario")
+    private String tipoUsuario;
+
+
 }

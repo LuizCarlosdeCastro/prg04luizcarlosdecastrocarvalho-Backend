@@ -14,7 +14,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 
-public class Usuario extends PersistenceEntity implements Serializable {
+public class Usuario implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String nome;
@@ -27,6 +31,9 @@ public class Usuario extends PersistenceEntity implements Serializable {
 
     @Column(name = "tipo_usuario", nullable = false, length = 20)
     private String tipoUsuario = "COMUM";
+
+    @Column(nullable = false, unique = true)
+    private String login;
 
     private LocalDate dataCadastro;
 

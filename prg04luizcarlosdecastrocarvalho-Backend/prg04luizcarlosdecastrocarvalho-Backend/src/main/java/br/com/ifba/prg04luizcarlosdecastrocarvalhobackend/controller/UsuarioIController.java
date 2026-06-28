@@ -6,6 +6,8 @@ import br.com.ifba.prg04luizcarlosdecastrocarvalhobackend.entity.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import java.util.List;
 
 public interface UsuarioIController {
@@ -14,4 +16,5 @@ public interface UsuarioIController {
     ResponseEntity<UsuarioGetResponseDto> findById(Long id);
     ResponseEntity<UsuarioGetResponseDto> update(Long id, UsuarioPostRequestDto usuarioPostRequestDto);
     ResponseEntity<Void> delete(Long id);
+    ResponseEntity<?> login(@RequestBody UsuarioPostRequestDto loginDto);
 }
