@@ -20,8 +20,10 @@ public class ReservaController implements ReservaIController {
     private final ReservaIService reservaService;
     private final UsuarioRepository usuarioRepository;
 
+
     @Override
-    @PostMapping(path = "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PostMapping(path = "/save")
     public ResponseEntity<Reserva> save(@RequestBody Reserva reserva) {
 
         if (reserva.getCliente() != null && reserva.getCliente().getId() != null) {
@@ -36,7 +38,8 @@ public class ReservaController implements ReservaIController {
     }
 
     @Override
-    @GetMapping(path = "/findall", produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping(path = "/findall")
     public ResponseEntity<List<Reserva>> findAll() {
         return ResponseEntity.ok(reservaService.findAll());
     }
