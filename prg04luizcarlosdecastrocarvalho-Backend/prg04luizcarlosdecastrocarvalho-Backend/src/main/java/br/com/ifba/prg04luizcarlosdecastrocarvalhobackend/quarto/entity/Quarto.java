@@ -20,8 +20,9 @@ public class Quarto extends PersistenceEntity {
     @Column(nullable = false, unique = true)
     private String numero;
 
-    @Column(nullable = false)
-    private String tipo;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private CategoriaQuarto categoria;
 
     @Column(nullable = false)
     private Double precoDiaria;

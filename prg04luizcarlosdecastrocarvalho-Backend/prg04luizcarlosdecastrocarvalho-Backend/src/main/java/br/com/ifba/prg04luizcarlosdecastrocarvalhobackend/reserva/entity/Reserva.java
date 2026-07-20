@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "reservas")
@@ -16,8 +17,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Reserva extends PersistenceEntity implements Serializable {
-
-
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "cliente_id", nullable = false)
@@ -38,4 +37,12 @@ public class Reserva extends PersistenceEntity implements Serializable {
     private LocalDate dataCheckOut;
 
     private String status = "RESERVADO";
+
+    @ManyToMany
+    @JoinTable(
+            name = "reserva_servicos",
+            joinColumns = @JoinColumn(name = "reserva_id"),
+            inverseJoinColumns = @JoinColumn(name = "servico_id")
+    )
+    private List<ServicoAdicional> servicosAdicionais;
 }
