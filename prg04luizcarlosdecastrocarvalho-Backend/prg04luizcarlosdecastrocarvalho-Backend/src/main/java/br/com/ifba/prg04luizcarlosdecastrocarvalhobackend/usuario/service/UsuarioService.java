@@ -73,8 +73,12 @@ public class UsuarioService implements UsuarioIService {
         if (usuarioAtualizado.getSenha() != null && usuarioAtualizado.getSenha().isEmpty()) {
             throw new RuntimeException("Senha não pode ser vazia");
         }
+        if (usuarioAtualizado.getLogin() != null && usuarioAtualizado.getLogin().isEmpty()) {
+            throw new RuntimeException("Login não pode ser vazio");
+        }
 
         Usuario usuarioExistente = this.findById(id);
+        usuarioExistente.setLogin(usuarioAtualizado.getLogin());
         usuarioExistente.setNome(usuarioAtualizado.getNome());
         usuarioExistente.setEmail(usuarioAtualizado.getEmail());
         usuarioExistente.setSenha(usuarioAtualizado.getSenha());
